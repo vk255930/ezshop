@@ -14,22 +14,6 @@
     <link href="{{ asset('plugins/fancybox/jquery.fancybox.pack.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- JAVASCRIPTS -->
-    <script src="{{ asset('plugins/jQuery/jquery.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap/js/popper.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap-slider.js') }}"></script>
-    <!-- tether js -->
-    <script src="{{ asset('plugins/tether/js/tether.min.js') }}"></script>
-    <script src="{{ asset('plugins/raty/jquery.raty-fa.js') }}"></script>
-    <script src="{{ asset('plugins/slick-carousel/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js') }}"></script>
-    <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js') }}"></script>
-    <!-- google map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-    <script src="{{ asset('plugins/google-map/gmap.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
 </head>
 <body class="body-wrapper">
     <section class="hero-area bg-1 text-center overly">
@@ -127,7 +111,7 @@
                                     <div class="thumb-content">
                                         <!-- <div class="price">$200</div> -->
                                         <a href="single.html">
-                                            <img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
+                                            <img class="card-img-top img-fluid" src="{{ asset('images/products/products-1.jpg') }}" alt="Card image cap">
                                         </a>
                                     </div>
                                     <div class="card-body">
@@ -161,7 +145,7 @@
                                     <div class="thumb-content">
                                         <!-- <div class="price">$200</div> -->
                                         <a href="single.html">
-                                            <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
+                                            <img class="card-img-top img-fluid" src="{{ asset('images/products/products-2.jpg') }}" alt="Card image cap">
                                         </a>
                                     </div>
                                     <div class="card-body">
@@ -195,7 +179,7 @@
                                     <div class="thumb-content">
                                         <!-- <div class="price">$200</div> -->
                                         <a href="single.html">
-                                            <img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
+                                            <img class="card-img-top img-fluid" src="{{ asset('images/products/products-3.jpg') }}" alt="Card image cap">
                                         </a>
                                     </div>
                                     <div class="card-body">
@@ -229,7 +213,7 @@
                                     <div class="thumb-content">
                                         <!-- <div class="price">$200</div> -->
                                         <a href="single.html">
-                                            <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
+                                            <img class="card-img-top img-fluid" src="{{ asset('images/products/products-2.jpg') }}" alt="Card image cap">
                                         </a>
                                     </div>
                                     <div class="card-body">
@@ -414,15 +398,15 @@
                     <p>Copyright © <script>
                         var CurrentYear = new Date().getFullYear()
                         document.write(CurrentYear)
-                        </script>. All Rights Reserved, theme by <a class="text-primary" href="https://themefisher.com" target="_blank">themefisher.com</a></p>
+                        </script>. All Rights Reserved, theme by <a class="text-primary" href="" target="_blank">themefisher.com</a></p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-12">
                     <!-- Social Icons -->
                     <ul class="social-media-icons text-right">
-                        <li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher" target="_blank"></a></li>
-                        <li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher" target="_blank"></a></li>
-                        <li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher" target="_blank"></a></li>
+                        <li><a class="fa fa-facebook" href="" target="_blank"></a></li>
+                        <li><a class="fa fa-twitter" href="" target="_blank"></a></li>
+                        <li><a class="fa fa-pinterest-p" href="" target="_blank"></a></li>
                         <li><a class="fa fa-vimeo" href=""></a></li>
                     </ul>
                 </div>
@@ -434,5 +418,21 @@
             <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
         </div>
     </footer>
+    <!-- JAVASCRIPTS -->
+    <script src="{{ asset('plugins/jQuery/jquery.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap/js/popper.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap-slider.js') }}"></script>
+    <!-- tether js -->
+    <script src="{{ asset('plugins/tether/js/tether.min.js') }}"></script>
+    <script src="{{ asset('plugins/raty/jquery.raty-fa.js') }}"></script>
+    <script src="{{ asset('plugins/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('plugins/fancybox/jquery.fancybox.pack.js') }}"></script>
+    <script src="{{ asset('plugins/smoothscroll/SmoothScroll.min.js') }}"></script>
+    <!-- google map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+    <script src="{{ asset('plugins/google-map/gmap.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 <html>
