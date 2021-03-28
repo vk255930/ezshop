@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('product');
-});
+Route::get('/', '\App\Http\Controllers\ProductTypeController@getProductType');
 
-Route::get('/list',  function () {
+Route::get('/list/{product_type_uuid}',  function () {
     return view('list');
 });
 

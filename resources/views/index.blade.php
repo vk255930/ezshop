@@ -11,6 +11,12 @@
                     <div class="short-popular-category-list text-center">
                         <h2>熱門品項</h2>
                         <ul class="list-inline">
+                            @foreach($product_types as $product_type)
+                            <li class="list-inline-item">
+                                <a href="/list/{{ $product_type['uuid'] }}">{{ $product_type['name'] }}</a>
+                            </li>
+                            @endforeach
+<!--                        
                             <li class="list-inline-item">
                                 <a href="/list">3C產品</a>
                             </li>
@@ -26,6 +32,7 @@
                             <li class="list-inline-item">
                                 <a href="/list">家具</a>
                             </li>
+-->                            
                         </ul>
                     </div>
                 </div>
