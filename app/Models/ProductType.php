@@ -12,10 +12,10 @@ class ProductType extends Model
     public static function getProductType($cond=array(), $type='list'){
         switch ($type) {
             case 'tag':
-                $column_arr = array('name', 'uuid');
+                $column_arr = array('uuid', 'name');
                 break;
             case 'list':
-                $column_arr = array('id', 'name', 'uuid');
+                $column_arr = array('id', 'uuid', 'name');
                 break;
             case 'type_list':
             case 'default_type_list':

@@ -29,9 +29,11 @@ class ProductTypeController extends Controller{
         if((int)$type_id == 0){
             return view('404');
         }
+        $product_types          = $this->getProductType('list', true);                                  // 類別資料
+        $products               = Product::getProduct(array('product_type_id' => $type_id), 'list');    // 產品資料
         // 取得類別列表資料
-        $product_types          = $this->getProductType('list', true);
         $data['product_types']  = $product_types;
+        $data['products']       = $products;
         return view('list', $data);
     }
     // 取得產品分類

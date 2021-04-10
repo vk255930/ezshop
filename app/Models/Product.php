@@ -11,8 +11,11 @@ class Product extends Model
     protected $table = 'product';
     public static function getProduct($cond=array(), $type='list'){
         switch ($type) {
+            case 'list':
+                $column_arr = array('uuid', 'name', 'amount', 'img_path', 'description');
+                break;
             case 'tag':
-                $column_arr = array('name', 'uuid');
+                $column_arr = array('uuid', 'name');
                 break;
             case 'product':
             case 'default_product':

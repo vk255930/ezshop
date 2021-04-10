@@ -42,40 +42,26 @@
                 </div>
                 <div class="product-grid-list">
                     <div class="row mt-30">
+                        @foreach($products as $product)
                         <div class="col-sm-12 col-lg-4 col-md-6">
-                            <!-- product card -->
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> -->
+                                        <div class="price">${{ number_format($product['amount']) }}</div>
                                         <a href="single.html">
-                                            <img class="card-img-top img-fluid" src="/images/products/products-1.jpg" alt="Card image cap">
+                                            <img class="card-img-top img-fluid" src="{{ $product['img_path'] }}" alt="Card image cap">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                                            </li>
-                                        </ul>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                        <div class="product-ratings">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
+                                        <h4 class="card-title">
+                                            <a href="single.html">{{ $product['name'] }}</a>
+                                        </h4>
+                                        <p class="card-text">{{ $product['description'] }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach 
                     </div>
                 </div>
                 <div class="pagination justify-content-center">
