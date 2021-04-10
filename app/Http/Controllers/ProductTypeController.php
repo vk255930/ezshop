@@ -13,7 +13,9 @@ class ProductTypeController extends Controller{
         return view('index', $data);
     }
     // 取得產品列表
-    public function getProductList($product_type_uuid=null){
+    public function getProductList($product_type_uuid=null, $sort_by='name_asc'){
+        // 取得排序查詢
+        $sort_list      = Controller::getListSort($sort_by);
         // 判斷是否有類別uuid，沒有則預設查詢第一筆類型
         $search_type    = is_null($product_type_uuid)? 'default_type_list': 'type_list';
         $search         = array();
@@ -24,16 +26,20 @@ class ProductTypeController extends Controller{
         $get_product_type   = ProductType::getProductType($search, $search_type);
         $product_type       = isset($get_product_type[0]) && is_array($get_product_type[0])? $get_product_type[0]: array();
         $type_id            = isset($product_type['id']) && (int)$product_type['id']>0? $product_type['id']: 0;
+        $type_uuid          = isset($product_type['uuid']) && (strlen(trim($product_type['uuid'])))>0? $product_type['uuid']: '';
         $type_name          = isset($product_type['name']) && (strlen(trim($product_type['name'])))>0? $product_type['name']: '';
         // 判斷是否存在此類別
         if((int)$type_id == 0){
             return view('404');
         }
-        $product_types          = $this->getProductType('list', true);                                  // 類別資料
-        $products               = Product::getProduct(array('product_type_id' => $type_id), 'list');    // 產品資料
+        $sort = $sort_list[$sort_by];
+        $product_types          = $this->getProductType('list', true); // 類別資料
+        $products               = Product::getProduct(array('product_type_id' => $type_id), 'list', $sort); // 產品資料
         // 取得類別列表資料
-        $data['product_types']  = $product_types;
-        $data['products']       = $products;
+        $data['product_type_uuid']  = $type_uuid;
+        $data['product_types']      = $product_types;
+        $data['products']           = $products;
+        $data['sorts']              = $sort_list;
         return view('list', $data);
     }
     // 取得產品分類

@@ -24,19 +24,12 @@
                 <div class="category-search-filter">
                     <div class="row">
                         <div class="col-md-6">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="view">
-                                <strong>Views</strong>
-                                <ul class="list-inline view-switcher">
-                                    <li class="list-inline-item">
-                                        <a href="#" onclick="event.preventDefault();" class="text-info"><i class="fa fa-th-large"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="ad-list-view.html"><i class="fa fa-reorder"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <strong>排序</strong>
+                            <select id="sort" onchange="changeForm('/list/{{ $product_type_uuid }}/'+$('#sort').val());">
+                                @foreach($sorts as $sort_code => $sort)
+                                <option value="{{ $sort_code }}" {{ $sort['is_select'] }}>{{ $sort['name'] }}</option>
+                                @endforeach 
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -56,7 +49,7 @@
                                         <h4 class="card-title">
                                             <a href="single.html">{{ $product['name'] }}</a>
                                         </h4>
-                                        <p class="card-text">{{ $product['description'] }}</p>
+                                        <p class="card-text">{!! nl2br($product['description']) !!}</p>
                                     </div>
                                 </div>
                             </div>
@@ -90,3 +83,8 @@
     </div>
 </section>
 @endsection
+<script>
+function search(){
+
+}
+</script>

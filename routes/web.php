@@ -14,13 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/index', '\App\Http\Controllers\ProductTypeController@setIndex');
-Route::get('/list', '\App\Http\Controllers\ProductTypeController@getProductList');
-Route::get('/list/{product_type_uuid}', '\App\Http\Controllers\ProductTypeController@getProductList');
-/*
-Route::get('/list/{product_type_uuid}',  function () {
-    return view('list');
-});
-*/
+Route::get('/list/{product_type_uuid?}/{order?}',  [
+    'uses'  => '\App\Http\Controllers\ProductTypeController@getProductList', 
+    'as'    => 'list'
+]);
 Route::get('/welcome', function () {
     return view('welcome');
 });

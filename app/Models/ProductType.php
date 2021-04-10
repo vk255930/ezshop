@@ -15,11 +15,9 @@ class ProductType extends Model
                 $column_arr = array('uuid', 'name');
                 break;
             case 'list':
-                $column_arr = array('id', 'uuid', 'name');
-                break;
             case 'type_list':
             case 'default_type_list':
-                $column_arr = array('id', 'name');
+                $column_arr = array('id', 'uuid', 'name');
                 break;
             default:
                 $column_arr = array();

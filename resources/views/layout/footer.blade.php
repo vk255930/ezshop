@@ -40,4 +40,6 @@
 <!-- google map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 <script src="{{ asset('/plugins/google-map/gmap.js') }}"></script>
+<script src="{{ asset('/js/jquery.min.js') }}"></script>
+<script src="{{ asset('/js/common.js') }}"></script>
 <script src="{{ asset('/js/script.js') }}"></script>

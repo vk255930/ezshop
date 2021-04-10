@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     protected $table = 'product';
-    public static function getProduct($cond=array(), $type='list'){
+    public static function getProduct($cond=array(), $type='list', $order=array()){
         switch ($type) {
             case 'list':
                 $column_arr = array('uuid', 'name', 'amount', 'img_path', 'description');
@@ -51,7 +51,9 @@ class Product extends Model
                 $product = Product::select($column_arr)->where($search)->limit(1)->orderBy('id', 'asc')->get()->toArray();
                 break;
             default:
-                $product = Product::select($column_arr)->where($search)->orderBy('id', 'asc')->get()->toArray();
+                $order_key  = isset($order['key'])? $order['key']: 'name';
+                $order_type = isset($order['type']) && $order['type'] == 'asc'? 'asc': 'desc';
+                $product = Product::select($column_arr)->where($search)->orderBy($order_key, $order_type)->get()->toArray();
                 break;
         }
         return $product;
