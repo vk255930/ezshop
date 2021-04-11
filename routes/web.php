@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/index', '\App\Http\Controllers\ProductTypeController@setIndex');
-Route::get('/list/{product_type_uuid?}/{order?}',  [
-    'uses'  => '\App\Http\Controllers\ProductTypeController@getProductList', 
+Route::get('/index', '\App\Http\Controllers\IndexController@getIndexView');
+Route::get('/list',  [
+    'uses'  => '\App\Http\Controllers\ListController@getListView', 
     'as'    => 'list'
 ]);
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+Route::get('/post', '\App\Http\Controllers\PostController@getPostView');

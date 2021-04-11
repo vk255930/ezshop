@@ -6,10 +6,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto main-nav ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/index">首頁</a>
+                                <a class="nav-link" onclick="changeForm('index');">首頁</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/list">商品</a>
+                                <a class="nav-link" onclick="changeForm('list');">商品</a>
                             </li>
 <!--                            
                             <li class="nav-item dropdown dropdown-slide">
@@ -57,7 +57,9 @@
                             </li>
 -->                        
                             <li class="nav-item">
-                                <a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Add Listing</a>
+                                <a class="nav-link text-white add-button" onclick="changeForm('post');">
+                                    <i class="fa fa-plus-circle"></i> 新增商品
+                                </a>
                             </li>
                         </ul>
                     </div>

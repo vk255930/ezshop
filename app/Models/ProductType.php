@@ -9,7 +9,7 @@ class ProductType extends Model
 {
     use HasFactory;
     protected $table = 'product_type';
-    public static function getProductType($cond=array(), $type='list'){
+    public static function getProductType($cond=array(), $type='list', $key_by='id'){
         switch ($type) {
             case 'tag':
                 $column_arr = array('uuid', 'name');
@@ -37,10 +37,10 @@ class ProductType extends Model
         }
         switch($type){
             case 'default_type_list':
-                $product_type = ProductType::select($column_arr)->where($search)->limit(1)->orderBy('id', 'asc')->get()->toArray();
+                $product_type = ProductType::select($column_arr)->where($search)->limit(1)->orderBy('id', 'asc')->get()->keyBy($key_by)->toArray();
                 break;
             default:
-                $product_type = ProductType::select($column_arr)->where($search)->orderBy('id', 'asc')->get()->toArray();
+                $product_type = ProductType::select($column_arr)->where($search)->orderBy('id', 'asc')->get()->keyBy($key_by)->toArray();
                 break;
         }
         return $product_type;

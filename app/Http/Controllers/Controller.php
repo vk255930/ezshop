@@ -6,6 +6,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use App\Models\ProductType; // 產品類型相關函式
+use App\Models\Product;     // 產品相關函式
 
 class Controller extends BaseController
 {
@@ -37,7 +39,6 @@ class Controller extends BaseController
                 'is_select' => '',
             )
         );
-        $sort[$sort_by]['is_select'] = 'selected';
         return $sort;
     }
 }

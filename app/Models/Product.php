@@ -31,14 +31,18 @@ class Product extends Model
         if (is_array($cond)) {
             foreach ($cond as $cond_key => $cond_val) {
                 switch ($cond_key) {
+                    case 'keyword':
+                        $search[] = array('name', 'like', '%'.$cond_val.'%');
+                        break;
                     default:
                         $search[] = array($cond_key, '=', $cond_val);
                         break;
                 }
             }
         }
+        $search = array_filter($search);
         switch($type){
-            case 'product_type_count':
+            case 'count':
                 $tmp_product_arr    = Product::select('product_type_id', Product::raw('count(id) as count'))->groupBy('product_type_id')->get()->toArray();
                 $product            = array();
                 foreach($tmp_product_arr as $tmp_product){
@@ -46,9 +50,6 @@ class Product extends Model
                     $product_count      = isset($tmp_product['count']) && (int)$tmp_product['count']>0? $tmp_product['count']: 0;
                     $product[$product_type_id] = $product_count;
                 }
-                break;
-            case 'default_product':
-                $product = Product::select($column_arr)->where($search)->limit(1)->orderBy('id', 'asc')->get()->toArray();
                 break;
             default:
                 $order_key  = isset($order['key'])? $order['key']: 'name';
