@@ -14,7 +14,7 @@
                         <ul class="list-inline">
                             @foreach($product_types as $product_type)
                             <li class="list-inline-item">
-                                <a href="/list/{{ $product_type['uuid'] }}">{{ $product_type['name'] }}</a>
+                                <a href="/list?type={{ $product_type['uuid'] }}">{{ $product_type['name'] }}</a>
                             </li>
                             @endforeach 
                         </ul>
@@ -28,18 +28,17 @@
                                 <form>
                                     <div class="form-row">
                                         <div class="form-group col-md-7">
-                                            <input type="text" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="想要找點什麼嗎?">
+                                            <input type="text" class="form-control my-2 my-lg-1 search" name="keyword" placeholder="想要找點什麼嗎?" onkeypress="if (event.keyCode == 13) {search('list');return false;}">
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <select class="w-100 form-control mt-lg-1 mt-md-2">
-                                                <option value="all">全部</option>
+                                            <select class="w-100 form-control mt-lg-1 mt-md-2 search" name="type">
                                                 @foreach($product_types as $product_type)
                                                 <option value="{{ $product_type['uuid'] }}">{{ $product_type['name'] }}</option>
                                                 @endforeach 
                                             </select>
                                         </div>
                                         <div class="form-group col-md-2 align-self-center">
-                                            <button type="button" class="btn btn-primary">搜尋</button>
+                                            <button type="button" class="btn btn-primary" onclick="search('list');">搜尋</button>
                                         </div>
                                     </div>
                                 </form>

@@ -30,15 +30,20 @@ class ListController extends Controller{
         $select_type    = empty($select_type) && isset($product_types[array_key_first($product_types)])? $product_types[array_key_first($product_types)]: $select_type;
         $type_id        = isset($select_type['id']) && (int)$select_type['id']>0? $select_type['id']: 0;
         $type_uuid      = isset($select_type['uuid']) && (strlen(trim($select_type['uuid'])))>0? $select_type['uuid']: '';
+        $type_name      = isset($select_type['name']) && (strlen(trim($select_type['name'])))>0? $select_type['name']: '';
+        // 設定目前所選類別
+        $product_types[$type_uuid]['active'] = 'active';
         // 取得類別下的產品
         $sort           = $sort_list[$sort_by];
         $products       = Product::getProduct(array('product_type_id' => $type_id, 'keyword' => $keyword), 'list', $sort);
         // 整理要印出的資料
-        $data['keyword']            = $keyword;
-        $data['product_type_uuid']  = $type_uuid;
-        $data['product_types']      = $product_types;
-        $data['products']           = $products;
-        $data['sorts']              = $sort_list;
+        $data['list_active']    = 'active';
+        $data['keyword']        = $keyword;
+        $data['type_uuid']      = $type_uuid;
+        $data['type_name']      = $type_name;
+        $data['product_types']  = $product_types;
+        $data['products']       = $products;
+        $data['sorts']          = $sort_list;
         return view('list', $data);
     } 
     // 取得產品分類

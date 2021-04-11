@@ -18,4 +18,9 @@ Route::get('/list',  [
     'uses'  => '\App\Http\Controllers\ListController@getListView', 
     'as'    => 'list'
 ]);
-Route::get('/post', '\App\Http\Controllers\PostController@getPostView');
+Route::get('/post',  [
+    'uses'  => '\App\Http\Controllers\PostController@getPostView', 
+    'as'    => 'post'
+]);
+Route::post('/saveProduct', '\App\Http\Controllers\FormController@saveProduct');
+

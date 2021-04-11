@@ -4,11 +4,41 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
     use HasFactory;
+    const CREATED_AT = 'create_time';
+    const UPDATED_AT = 'modify_time';
     protected $table = 'product';
+    protected $fillable = [
+        'name',
+        'product_type_id',
+        'amount',
+        'img_path',
+        'description',
+        'create_by',
+        'modify_by'
+    ];
+    protected $access = array(
+        'name',
+        'product_type_id',
+        'amount',
+        'img_path',
+        'description',
+        'create_by',
+        'modify_by'
+    );
+    public static function boot(){
+        parent::boot();
+        self::creating(function ($model) {
+            $model->uuid = Str::uuid();
+        });
+    }
+    protected function getAccessField(){
+        return $this->access;
+    }
     public static function getProduct($cond=array(), $type='list', $order=array()){
         switch ($type) {
             case 'list':

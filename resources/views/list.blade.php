@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+<input type="hidden" class="search" name="type" value="{{ $type_uuid }}">
 <section class="page-search">
     <div class="container">
         <div class="row">
@@ -8,10 +9,10 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-10">
-                                <input type="text" class="form-control my-2 my-lg-0 search" name="keyword" placeholder="請輸入關鍵字" value="{{ $keyword }}" onkeypress="if (event.keyCode == 13) {search();return false;}">
+                                <input type="text" class="form-control my-2 my-lg-0 search" name="keyword" placeholder="請輸入關鍵字" value="{{ $keyword }}" onkeypress="if (event.keyCode == 13) {search('list');return false;}">
                             </div>
                             <div class="form-group col-md-2">
-                                <button type="button" class="btn btn-primary" onclick="search();">搜尋</button>
+                                <button type="button" class="btn btn-primary" onclick="search('list');">搜尋</button>
                             </div>
                         </div>
                     </form>
@@ -26,10 +27,10 @@
             <div class="col-md-3">
                 <div class="category-sidebar">
                     <div class="widget category-list">
-                        <h4 class="widget-header">類別</h4>
+                        <h4 class="widget-header">類別: {{ $type_name }}</h4>
                         <ul class="category-list">
                             @foreach($product_types as $product_type)
-                            <li>
+                            <li class="{{ $product_type['active'] ?? '' }}">
                                 <a href="/list?type={{ $product_type['uuid'] }}">{{ $product_type['name'] }} 
                                     <span>{{ $product_type['product_count'] }}</span>
                                 </a>
@@ -44,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <strong>排序</strong>
-                            <select id="order" name="order" class="search" onchange="search();">
+                            <select id="order" name="order" class="search" onchange="search('list');">
                                 @foreach($sorts as $sort_code => $sort)
                                 <option value="{{ $sort_code }}" {{ $sort['is_select'] }}>{{ $sort['name'] }}</option>
                                 @endforeach 
@@ -102,20 +103,3 @@
     </div>
 </section>
 @endsection
-<script>
-function search(){
-    var url     = '/list?type={{ $product_type_uuid }}';
-    var search  = [];
-    $('.search').each(function(){
-        var name    = $(this).attr('name');
-        var value   = $(this).val();
-        if(value.trim().length>0){
-            search.push(name + '=' + value);
-        }
-    });
-    if(search.length>0){
-        url+= '&'+search.join('&');
-    }
-    changeForm(url);
-}
-</script>

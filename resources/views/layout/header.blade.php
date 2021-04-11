@@ -5,10 +5,10 @@
                 <nav class="navbar navbar-expand-lg navbar-light navigation">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto main-nav ">
-                            <li class="nav-item active">
+                            <li class="nav-item {{ $index_active ?? '' }}">
                                 <a class="nav-link" onclick="changeForm('index');">首頁</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item {{ $list_active ?? '' }}">
                                 <a class="nav-link" onclick="changeForm('list');">商品</a>
                             </li>
 <!--                            

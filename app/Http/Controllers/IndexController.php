@@ -9,6 +9,7 @@ use App\Models\Product;     // 產品相關函式
 class IndexController extends Controller{
     public function getIndexView(){
         $product_types          = $product_types = ProductType::getProductType(array(), 'tag');
+        $data['index_active']   = 'active';
         $data['product_types']  = $product_types;
         return view('index', $data);
     }
