@@ -14,6 +14,7 @@
     <link href="{{ asset('/plugins/fancybox/jquery.fancybox.pack.css') }}" rel="stylesheet">
     <link href="{{ asset('/plugins/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <script src="{{ asset('/js/jquery.min.js') }}"></script>
 </head>
 <body class="body-wrapper">
 @include('layout.header')

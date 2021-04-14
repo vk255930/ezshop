@@ -42,5 +42,4 @@
 <script src="{{ asset('/plugins/google-map/gmap.js') }}"></script>
 <script src="{{ asset('/js/common.js') }}"></script>
 <script src="{{ asset('/js/script.js') }}"></script>
-<script src="{{ asset('/js/jquery.min.js') }}"></script>
 <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->

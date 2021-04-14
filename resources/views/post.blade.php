@@ -3,7 +3,7 @@
 <section class="bg-gray py-5">
     <div class="container">
         <div id="error_msg_block" style="display: none" class="alert alert-danger" role="alert"></div>
-        <form id="product_form">
+        <form id="product_form" enctype="multipart/form-data">
             {{ csrf_field() }}
             <fieldset class="border border-gary p-4 mb-5">
                 <div class="row">
@@ -32,15 +32,18 @@
                             </div>
                         </div>
                         <div class="choose-file text-center my-4 py-4 rounded">
-                            <label for="file-upload">
-                                <span class="d-block font-weight-bold text-dark">Drop files anywhere to upload</span>
-                                <span class="d-block">or</span>
-                                <span class="d-block btn bg-primary text-white my-3 select-files">Select files</span>
-                                <span class="d-block">Maximum upload file size: 500 KB</span>
-                                <input type="file" class="form-control-file d-none" id="file-upload" name="file">
+                            <label for="file">
+                                <span class="d-block btn bg-primary text-white my-3 select-files">選擇檔案</span>
+                                <span class="d-block">最大上傳文件大小：2 MB</span>
+                                <input type="file" id="file" class="form-control-file d-none" accept="image/*">
                             </label>
                         </div>
                     </div>
+                </div>
+                <div align="left">
+                    <img id="file_image">
+                    <span id="file_name" style="font: size 6px;"></span>
+                    <input type="hidden" id="photo" name="photo">
                 </div>
             </fieldset>
             <button type="button" class="btn btn-primary d-block mt-2" onclick="saveProduct();">新增</button>
@@ -56,6 +59,22 @@
             return;
         }
         sendForm('saveProduct', 'product_form');
+    }
+    // 顯示上傳的檔案
+    $('#file').change(function(){
+        var file = this.files[0];
+        var file_name = file['name'];
+        readFile(file, function(e) {
+            $('#file_image').prop('src', e.target.result);
+            $('#photo').val(e.target.result);
+        });
+        $('#file_name').text(file_name);
+    });
+    // 讀取base64圖檔
+    function readFile(file, callback){
+        var reader      = new FileReader();
+        reader.onload   = callback;
+        reader.readAsDataURL(file);
     }
 </script>
 @endsection

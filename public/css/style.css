@@ -2531,13 +2531,13 @@ article.single-post p {
     margin-bottom: 0;
 }
 
-.ad-post .choose-file {
+.choose-file {
     cursor: pointer;
     display: block;
     border: 3px dashed #eaedef;
 }
 
-.ad-post .choose-file .select-files {
+.choose-file .select-files {
     border-radius: 45px;
 }
 
@@ -2761,4 +2761,10 @@ form textarea {
 }
 
 
+img{
+	width: auto;
+	height: 50px;
+	max-width: 100%;
+	max-height: 100%;
+} 
 /*# sourceMappingURL=maps/style.css.map */

@@ -36,11 +36,12 @@ function checkInput(check_field){
 }
 // 儲存
 function sendForm(action, form){
+    var data = $('#'+form).serialize();
     $.ajax({
         async: false,
         url: '/'+action,
         type: 'post',
-        data: $('#'+form).serialize(),
+        data: data,
         dataType: 'json',
         success: function (response) {
             if (response['error']) {

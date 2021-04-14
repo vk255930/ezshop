@@ -8,8 +8,11 @@
                             <li class="nav-item {{ $index_active ?? '' }}">
                                 <a class="nav-link" onclick="changeForm('index');">首頁</a>
                             </li>
+                            <li class="nav-item {{ $dashboard_active ?? '' }}">
+                                <a class="nav-link" onclick="changeForm('dashboard');">我的拍賣</a>
+                            </li>
                             <li class="nav-item {{ $list_active ?? '' }}">
-                                <a class="nav-link" onclick="changeForm('list');">商品</a>
+                                <a class="nav-link" onclick="changeForm('list');">所有商品</a>
                             </li>
 <!--                            
                             <li class="nav-item dropdown dropdown-slide">

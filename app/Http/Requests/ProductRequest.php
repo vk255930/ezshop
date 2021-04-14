@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Speaker;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -29,7 +28,8 @@ class ProductRequest extends FormRequest
             'product'   => 'required|string',
             'desc'      => 'nullable|string|max:300',
             'type'      => 'required|string|max:36',
-            'price'     => 'required|integer|digits_between:1,7'
+            'price'     => 'required|integer|digits_between:1,7',
+            // 'photo'     => 'nullable|string'
         ];
     }
 }

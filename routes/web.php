@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/index', '\App\Http\Controllers\IndexController@getIndexView');
+Route::get('/dashboard',  [
+    'uses'  => '\App\Http\Controllers\DashboardController@getDashboardView', 
+    'as'    => 'dashboard'
+]);
 Route::get('/list',  [
     'uses'  => '\App\Http\Controllers\ListController@getListView', 
     'as'    => 'list'
