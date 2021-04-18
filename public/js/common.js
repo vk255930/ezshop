@@ -36,13 +36,16 @@ function checkInput(check_field){
 }
 // 儲存
 function sendForm(action, form){
-    var data = $('#'+form).serialize();
+    // var data = $('#'+form).serialize();
+    var data = new FormData(document.getElementById('product_form'));
     $.ajax({
         async: false,
         url: '/'+action,
         type: 'post',
         data: data,
         dataType: 'json',
+        processData: false,
+        contentType: false,
         success: function (response) {
             if (response['error']) {
                 $('#error_msg_block').show().append('<p>' + response['msg'] + '</p>');

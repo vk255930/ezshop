@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Validator;
+use Storage;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ProductType;             // 產品類型相關函式
 use App\Models\Product;                 // 產品相關函式
@@ -25,6 +27,13 @@ class FormController extends Controller{
         $check      = new ProductRequest();
         $rules      = $check->rules();
         $validator  = Validator::make($input, $rules);
+        // 儲存檔案
+        $file_path  = '/images/products/default.jpg';
+        if ($request->hasFile('file')) {
+            $file_name  = Str::random(8). '.'.$request->file('file')->getClientOriginalExtension();
+            Storage::put('/public/'.$file_name, $request->file('file')->get());
+            $file_path  = '/storage/'.$file_name;
+        }    
         if(!$validator->passes()){
             $this->msg  = '資料格式錯誤'.$validator->errors();
             $result     = $this->returnResult();
@@ -41,7 +50,7 @@ class FormController extends Controller{
         $data['name']               = $input['product'];
         $data['product_type_id']    = $type_id;
         $data['amount']             = $input['price'];
-        $data['img_path']           = '/images/products/default.jpg';
+        $data['img_path']           = $file_path;
         $data['description']        = $input['desc'];
         $data['create_by']          = 0;
         $data['modify_by']          = 0;

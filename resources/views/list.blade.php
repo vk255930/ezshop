@@ -62,7 +62,7 @@
                                     <div class="thumb-content">
                                         <div class="price">${{ number_format($product['amount']) }}</div>
                                         <a href="single.html">
-                                            <img class="card-img-top img-fluid" src="{{ $product['img_path'] }}" alt="Card image cap">
+                                            <img class="card-img-top img-fluid" src="{{  asset($product['img_path']) }}" alt="Card image cap">
                                         </a>
                                     </div>
                                     <div class="card-body">

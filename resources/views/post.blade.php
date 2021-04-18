@@ -3,7 +3,7 @@
 <section class="bg-gray py-5">
     <div class="container">
         <div id="error_msg_block" style="display: none" class="alert alert-danger" role="alert"></div>
-        <form id="product_form" enctype="multipart/form-data">
+        <form id="product_form" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <fieldset class="border border-gary p-4 mb-5">
                 <div class="row">
@@ -35,7 +35,7 @@
                             <label for="file">
                                 <span class="d-block btn bg-primary text-white my-3 select-files">選擇檔案</span>
                                 <span class="d-block">最大上傳文件大小：2 MB</span>
-                                <input type="file" id="file" class="form-control-file d-none" accept="image/*">
+                                <input type="file" id="file" name="file" class="form-control-file d-none" accept="image/*">
                             </label>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                 <div align="left">
                     <img id="file_image">
                     <span id="file_name" style="font: size 6px;"></span>
-                    <input type="hidden" id="photo" name="photo">
+                    <!-- <input type="hidden" id="photo" name="photo"> -->
                 </div>
             </fieldset>
             <button type="button" class="btn btn-primary d-block mt-2" onclick="saveProduct();">新增</button>
