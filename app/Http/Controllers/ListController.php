@@ -54,7 +54,7 @@ class ListController extends Controller{
         if($has_count){
             $data = array();
             // 取得各類別的商品數
-            $product_count = Product::getProduct(array(), 'count');
+            $product_count = Product::getProduct(array(), 'type_count');
             foreach($product_types as $product_type){
                 $product_type['product_count'] = isset($product_count[$product_type['id']]) && (int)$product_count[$product_type['id']]>0? $product_count[$product_type['id']]: 0;
                 $data[$product_type['uuid']] = $product_type;

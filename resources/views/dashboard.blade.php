@@ -22,25 +22,22 @@
                     <table class="table table-responsive product-dashboard-table">
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Product Title</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Action</th>
+                                <th>圖片</th>
+                                <th>標題</th>
+                                <th class="text-center">類別</th>
+                                <th class="text-center">動作</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($products as $product)
                             <tr>
                                 <td class="product-thumb">
-                                    <img width="80px" height="auto" src="images/products/products-1.jpg" alt="image description">
+                                    <img width="80px" height="auto" src="{{  asset($product['img_path']) }}" alt="image description">
                                 </td>
                                 <td class="product-details">
-                                    <h3 class="title">Macbook Pro 15inch</h3>
-                                    <span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-                                    <span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-                                    <span class="status active"><strong>Status</strong>Active</span>
-                                    <span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
+                                    <h3 class="title">{{ $product['name'] }}</h3> 
                                 </td>
-                                <td class="product-category"><span class="categories">Laptops</span></td>
+                                <td class="product-category"><span class="categories">{{ $product['type_name'] }}</span></td>
                                 <td class="action" data-title="Action">
                                     <div class="">
                                         <ul class="list-inline justify-content-center">
@@ -63,6 +60,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach 
                         </tbody>
                     </table>
                 </div>
@@ -71,16 +69,18 @@
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
+                                <a class="page-link" onclick="changeForm('dashboard?page={{ $prev }}')" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                                 <span class="sr-only">Previous</span>
                                 </a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            @foreach($pages as $page)
+                            <li class="page-item {{ $page['active'] }}">
+                                <a class="page-link" onclick="changeForm('dashboard?page={{ $page['page'] }}')">{{ $page['page'] }}</a>
+                            </li>
+                            @endforeach 
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
+                                <a class="page-link" onclick="changeForm('dashboard?page={{ $next }}')" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                                 <span class="sr-only">Next</span>
                                 </a>

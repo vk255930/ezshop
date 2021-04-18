@@ -11,8 +11,9 @@ class PostController extends Controller{
         // 取得傳入參數
         $product                = $request->query('product');
 */        
-        $product_types          = $product_types = ProductType::getProductType(array(), 'tag');
-        $data['product_types']  = $product_types;
+        $product_types              = $product_types = ProductType::getProductType(array(), 'tag');
+        $data['dashboard_active']   = 'active';
+        $data['product_types']      = $product_types;
         return view('post', $data);
     }
 }

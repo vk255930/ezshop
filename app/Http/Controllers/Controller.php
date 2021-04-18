@@ -41,4 +41,28 @@ class Controller extends BaseController
         );
         return $sort;
     }
+    // 取得查詢起始筆數
+    function getPageOffset($now_page=1, $page_count=5){
+        $page_offset  = ($now_page -1) * $page_count;
+        return $page_offset;
+    }
+    // 取得頁籤
+    function getPageInfo($total_count=0, $now_page=1, $show_page=5, $page_count=5){
+        $total_page = ceil($total_count/$page_count);
+        $end_page   = $show_page * ceil($now_page/$show_page);
+        $end_page   = ($end_page > $total_page)? $total_page: $end_page;
+        $start_page = ($end_page - ($show_page - 1)>0)? $end_page - ($show_page - 1): 1;
+        $pages      = array();
+        for($start=$start_page; $start<=$end_page; $start++){
+            $active     = ($now_page == $start)? 'active': '';
+            $pages[]    = array('page' => $start, 'active' => $active);
+        }
+        $next = $now_page+1;
+        $prev = ($now_page-1)>0? $now_page-1: 1;
+        return array(
+            'next'  => $next,
+            'prev'  => $prev,
+            'pages' => $pages
+        );
+    }
 }
