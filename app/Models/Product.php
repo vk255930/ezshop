@@ -41,6 +41,9 @@ class Product extends Model
     }
     public static function getProduct($cond=array(), $type='list', $order=array(), $page_offset=0, $limit=5){
         switch ($type) {
+            case 'id':
+                $column_arr = array('id');
+                break;
             case 'dashboard':
             case 'list':
                 $column_arr = array('uuid', 'product_type_id', 'name', 'amount', 'img_path', 'description');
@@ -73,6 +76,9 @@ class Product extends Model
         }
         $search = array_filter($search);
         switch($type){
+            case 'id':
+                $product = Product::select($column_arr)->where($search)->orderBy('id', 'asc')->value('id');
+                break;
             case 'count':
                 $product = Product::select('id')->get()->count();
                 break;

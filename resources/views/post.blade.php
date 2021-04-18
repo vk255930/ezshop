@@ -5,6 +5,7 @@
         <div id="error_msg_block" style="display: none" class="alert alert-danger" role="alert"></div>
         <form id="product_form" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
+            <input type="hidden" name="uuid" value="{{ $product['uuid'] ?? '' }}">
             <fieldset class="border border-gary p-4 mb-5">
                 <div class="row">
                     <div class="col-lg-12">
@@ -12,22 +13,22 @@
                     </div>
                     <div class="col-lg-6">
                         <h6 id="product_title" class="font-weight-bold pt-4 pb-1">標題</h6>
-                        <input type="text" id="product" name="product" class="border w-100 p-2 bg-white text-capitalize" placeholder="請輸入商品標題">
+                        <input type="text" id="product" name="product" class="border w-100 p-2 bg-white text-capitalize" placeholder="請輸入商品標題" value="{{ $product['name'] ?? '' }}">
                         <h6 id="desc_title" class="font-weight-bold pt-4 pb-1">備註</h6>
-                        <textarea class="border p-3 w-100" id="desc" name="desc" rows="7" placeholder="備註"></textarea>
+                        <textarea class="border p-3 w-100" id="desc" name="desc" rows="7" placeholder="備註">{{ $product['description'] ?? '' }}</textarea>
                     </div>
                     <div class="col-lg-6">
                         <h6 id="type_title" class="font-weight-bold pt-4 pb-1">類別</h6>
                         <select id="type" name="type" class="w-100">
                             @foreach($product_types as $product_type)
-                            <option value="{{ $product_type['uuid'] }}">{{ $product_type['name'] }}</option>
+                            <option value="{{ $product_type['uuid'] }}" {{ $product_type['selected'] ?? '' }}>{{ $product_type['name'] }}</option>
                             @endforeach 
                         </select>
                         <div class="price">
                             <h6 class="font-weight-bold pt-4 pb-1" id="price_title">價格</h6>
                             <div class="row px-3">
                                 <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
-                                    <input type="text" id="price" name="price" class="border-0 py-2 w-100" placeholder="請輸入價格">
+                                    <input type="text" id="price" name="price" class="border-0 py-2 w-100" placeholder="請輸入價格" value="{{ $product['amount'] }}">
                                 </div>
                             </div>
                         </div>
@@ -41,12 +42,15 @@
                     </div>
                 </div>
                 <div align="left">
+                    @if (isset($product['img_path']))
+                    <img id="file_image" src="{{  asset($product['img_path']) }}">
+                    @else
                     <img id="file_image">
+                    @endif
                     <span id="file_name" style="font: size 6px;"></span>
-                    <!-- <input type="hidden" id="photo" name="photo"> -->
                 </div>
             </fieldset>
-            <button type="button" class="btn btn-primary d-block mt-2" onclick="saveProduct();">新增</button>
+            <button type="button" class="btn btn-primary d-block mt-2" onclick="saveProduct();">儲存</button>
         </form>
     </div>
 </section>

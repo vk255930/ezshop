@@ -25,6 +25,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
+            'uuid'      => 'nullable|string',
             'product'   => 'required|string',
             'desc'      => 'nullable|string|max:300',
             'type'      => 'required|string|max:36',

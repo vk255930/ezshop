@@ -42,17 +42,17 @@
                                     <div class="">
                                         <ul class="list-inline justify-content-center">
                                             <li class="list-inline-item">
-                                                <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="category.html">
+                                                <a data-toggle="tooltip" data-placement="top" class="view" onclick="">
                                                 <i class="fa fa-eye"></i>
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="">
+                                                <a class="edit" data-toggle="tooltip" data-placement="top" onclick="changeForm('post?product={{ $product['uuid'] }}');">
                                                 <i class="fa fa-pencil"></i>
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="">
+                                                <a class="delete" data-toggle="tooltip" data-placement="top" onclick="">
                                                 <i class="fa fa-trash"></i>
                                                 </a>
                                             </li>
