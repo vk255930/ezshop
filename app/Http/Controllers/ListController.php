@@ -37,7 +37,6 @@ class ListController extends Controller{
         // 取得類別下的產品
         $sort           = $sort_list[$sort_by];
         $products       = Product::getProduct(array('product_type_id' => $type_id, 'keyword' => $keyword), 'list', $sort);
-        // echo "<pre>"; print_r($contents = Storage::url('products/rhBgnG1a.jpg')); echo "</pre>";
         // 整理要印出的資料
         $data['list_active']    = 'active';
         $data['keyword']        = $keyword;

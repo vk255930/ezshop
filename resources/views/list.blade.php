@@ -61,7 +61,7 @@
                                 <div class="card">
                                     <div class="thumb-content">
                                         <div class="price">${{ number_format($product['amount']) }}</div>
-                                        <a href="single.html">
+                                        <a onclick="changeForm('product?uuid={{ $product['uuid'] }}');">
                                             <img class="card-img-top img-fluid" src="{{  asset($product['img_path']) }}" alt="Card image cap">
                                         </a>
                                     </div>

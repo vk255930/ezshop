@@ -42,11 +42,6 @@
                                     <div class="">
                                         <ul class="list-inline justify-content-center">
                                             <li class="list-inline-item">
-                                                <a data-toggle="tooltip" data-placement="top" class="view" onclick="">
-                                                <i class="fa fa-eye"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
                                                 <a class="edit" data-toggle="tooltip" data-placement="top" onclick="changeForm('post?product={{ $product['uuid'] }}');">
                                                 <i class="fa fa-pencil"></i>
                                                 </a>

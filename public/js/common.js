@@ -1,6 +1,6 @@
 // 換頁
 function changeForm(url){
-    location.replace(url);
+    window.location = url;
 }
 // 查詢
 function search(page){

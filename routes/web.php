@@ -27,4 +27,8 @@ Route::get('/post',  [
     'as'    => 'post'
 ]);
 Route::post('/saveProduct', '\App\Http\Controllers\FormController@saveProduct');
+Route::get('/product',  [
+    'uses'  => '\App\Http\Controllers\ProductController@getProductView', 
+    'as'    => 'product'
+]);
 

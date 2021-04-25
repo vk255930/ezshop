@@ -55,6 +55,9 @@ class Product extends Model
             case 'default_product':
                 $column_arr = array('id', 'name');
                 break;
+            case 'other':
+                $column_arr = array('uuid', 'name', 'amount', 'img_path');
+                break;
             default:
                 $column_arr = array();
                 break;
