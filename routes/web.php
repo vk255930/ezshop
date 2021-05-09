@@ -31,4 +31,8 @@ Route::get('/product',  [
     'uses'  => '\App\Http\Controllers\ProductController@getProductView', 
     'as'    => 'product'
 ]);
+Route::get('/order',  [
+    'uses'  => '\App\Http\Controllers\OrderController@getOrderView', 
+    'as'    => 'order'
+]);
 

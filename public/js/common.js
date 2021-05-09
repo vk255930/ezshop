@@ -37,7 +37,7 @@ function checkInput(check_field){
 // 儲存
 function sendForm(action, form){
     // var data = $('#'+form).serialize();
-    var data = new FormData(document.getElementById('product_form'));
+    var data = new FormData(document.getElementById(form));
     $.ajax({
         async: false,
         url: '/'+action,

@@ -18,8 +18,9 @@ class ProductController extends Controller{
         $product            = isset($get_product[0]) && is_array($get_product[0])? $get_product[0]: array();
         $product['amount']  = isset($product['amount'])? (int)$product['amount']: '';
         $type_id            = isset($product['product_type_id'])? $product['product_type_id']: '';
-        $products           = Product::getProduct(array('product_type_id' => $type_id, 'nuuid' => $uuid), 'other');
+        $products           = Product::getProduct(array('product_type_id' => $type_id), 'other');
         $data['list_active']    = 'active';
+        $data['uuid']           = $uuid;
         $data['products']       = $products;
         $data['product']        = $product;
         return view('product', $data);

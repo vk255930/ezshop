@@ -4,7 +4,10 @@
 =            Store Section            =
 ====================================-->
 <section class="section bg-gray">
-    <!-- Container Start -->
+    <form id="order_form">
+        {{ csrf_field() }}
+        <input type="hidden" id="uuid" name="uuid" value="{{ $uuid }}">
+    </form>
     <div class="container">
         <div class="row">
             <!-- Left sidebar -->
@@ -33,7 +36,7 @@
                     <div class="widget user text-center">
                         <ul class="list-inline mt-20">
                             <li class="list-inline-item">
-                                <a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">購買</a>
+                                <a href="javascript:changeForm('order?uuid={{ $product['uuid'] }}');" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">購買</a>
                             </li>
                         </ul>
                     </div>
@@ -54,4 +57,10 @@
         </div>
     </div>
 </section>
+<script>
+    // 儲存商品
+    function order(){
+        sendForm('order', 'order_form');
+    }
+</script>    
 @endsection
