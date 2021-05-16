@@ -35,4 +35,4 @@ Route::get('/order',  [
     'uses'  => '\App\Http\Controllers\OrderController@getOrderView', 
     'as'    => 'order'
 ]);
-
+Route::post('/pay', '\App\Http\Controllers\PayController@order');

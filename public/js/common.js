@@ -50,11 +50,17 @@ function sendForm(action, form){
             if (response['error']) {
                 $('#error_msg_block').show().append('<p>' + response['msg'] + '</p>');
             } else {
-                console.log(response);
-                if(typeof(response['url']) != "undefined" && response['url'] !== null){
-                    changeForm(response['url']);
-                }else{
-                    // history.go(0);
+                switch(form){
+                    case 'order_form':
+                        $('#'+form).append(response['data']);
+                        break;
+                    default:
+                        if(typeof(response['url']) != "undefined" && response['url'] !== null){
+                            changeForm(response['url']);
+                        }else{
+                            // history.go(0);
+                        }
+                        break;
                 }
             }
         },

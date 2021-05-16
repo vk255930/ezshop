@@ -4,10 +4,6 @@
 =            Store Section            =
 ====================================-->
 <section class="section bg-gray">
-    <form id="order_form">
-        {{ csrf_field() }}
-        <input type="hidden" id="uuid" name="uuid" value="{{ $uuid }}">
-    </form>
     <div class="container">
         <div class="row">
             <!-- Left sidebar -->
@@ -58,9 +54,5 @@
     </div>
 </section>
 <script>
-    // 儲存商品
-    function order(){
-        sendForm('order', 'order_form');
-    }
 </script>    
 @endsection
